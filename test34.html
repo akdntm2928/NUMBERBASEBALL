@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        function solution(n, lost, reserve) {
+            reserve = reserve.sort((a,b)=>{
+                return a-b
+            })
+            lost = lost.sort((a,b)=>{
+                return a-b
+            })
+            var cnt =0
+            var overlap =0
+            var result =n-lost.length;
+            
+            for(let i=0; i<lost.length; i++){
+                if(reserve.includes(lost[i])==true){
+                    overlap++;
+                }
+            }
+            for(let i=0; i<lost.length; i++){
+                
+                if(reserve.includes(lost[i])==false){
+                    for(let j=0; j<reserve.length; j++){
+                        if(lost[i]+1 == reserve[j] && lost.includes(reserve[j])==false){
+                            cnt +=1;
+                            lost[i] ='ok';
+                            reserve[j] ='ok';
+                        }
+                        if(lost[i]-1 == reserve[j] && lost.includes(reserve[j])==false){
+                            cnt +=1;
+                            lost[i] ='ok';
+                            reserve[j] ='ok';
+                        }   
+                    }
+                }
+            }
+        
+           return result = result+cnt+overlap;
+        }
+ 
+    console.log(solution(5,	[2, 4],	[1, 3, 5]))
+    // console.log(solution(5	,[2, 4]	,[3]))
+    //  console.log(solution(5, [2,3,4] ,[1,2,3]))
+    </script>
+
+</body>
+</html>

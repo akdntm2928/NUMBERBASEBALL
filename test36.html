@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+function solution(s)
+{
+    s = s.split('');
+    
+    while(0 < s.length){
+        var cnt = 0;
+        for(let i = 0; i<s.length; i++){
+            if(s[i] == s[i+1]){
+                s.splice(i,1);
+                s.splice(i,1);
+                i=0;
+                cnt +=1;
+            }
+        }
+        if(cnt == 0){
+            break;
+        }
+    }
+    if(s.length !=0){
+        return 0
+    }else{
+        return 1
+    }
+}
+
+function solution(s)
+{
+    //문자열이 홀수면 0
+    if(s.length % 2 != 0) return 0
+
+    const answer = []
+    const a = [...s]
+
+    for(let i = 0; i < a.length; i++) {        
+        //문자 비교
+        if(a[i] == answer[answer.length-1]) {
+            answer.pop();
+            continue
+        }
+
+        //문자 입력
+        answer.push(a[i])
+
+        //남은 문자의 개수가 현재까지 입력된 개수보다 적으면 0
+        if(a.length - i < answer.length) return 0
+    }
+
+    return 1
+}
+
+            console.log(solution('cdcd'));
+            // console.log(solution([95, 90, 99, 99, 80, 99],[1, 1, 1, 1, 1, 1]));
+            // console.log(solution([20, 99, 93, 30, 55, 10], [5, 10, 1, 1, 30, 5]));
+
+    </script>
+
+</body>
+</html>

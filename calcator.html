@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    button{
+        width: 24px;
+    }
+</style>
+<body>
+    <table>
+        <tr>
+            <td>
+                <input id="operator" style="width: 15px;">
+            </td>
+            <td colspan="3" >
+                <input id="calc" style="width: 72px;">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button id ='num_7'>7</button>
+            </td>
+            <td>
+                <button id ='num_8'>8</button>
+            </td>
+            <td>
+                <button id ='num_9'>9</button>
+            </td>
+            <td>
+                <button id ='num_plus'>+</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button id ='num_4'>4</button>
+            </td>
+            <td>
+                <button id ='num_5'>5</button>
+            </td>
+            <td>
+                <button id ='num_6'>6</button>
+            </td>
+            <td>
+                <button id ='num_min'>-</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button id ='num_1'>1</button>
+            </td>
+            <td>
+                <button id ='num_2'>2</button>
+            </td>
+            <td>
+                <button id ='num_3'>3</button>
+            </td>
+            <td>
+                <button id ='num_divide'>/</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button  id ='num_remove'>C</button>
+            </td>
+            <td>
+                <button  id ='num_0'>0</button>
+            </td>
+            <td>
+                <button  id ='num_result'>=</button>
+            </td>
+            <td>
+                <button  id ='num_mul'>*</button>
+            </td>
+        </tr>
+    </table>
+    <script>
+        const $calc = document.querySelector("#calc")
+        const $operator = document.querySelector("#operator")
+
+        let num1 = '';
+        let num2 = '';
+        let operator = '';
+
+        var onclick = () => (e)=>{
+            const num  = e.target.textContent;
+            if(!operator){
+                num1 +=num;
+               $calc.value = num1;
+            }
+
+            if(operator){
+                num2 +=num;
+                $calc.value = num2;
+            }
+        }
+        var onclick2 = () => (e)=>{
+            console.log(num1);
+            if(!num1){
+                alert('숫자을 입력하세여');
+                return
+            }
+    
+            num1 = $calc.value
+            operator = e.target.textContent;
+            $operator.value = e.target.textContent;
+            $calc.value = '';                
+        
+        }
+
+        var onclick3 = () => ()=>{
+            
+            if(!num2){
+                alert('숫자을 입력하세요');
+                return;
+            }
+            switch(operator){
+                case '+':
+                    $calc.value  = parseInt(num1,10) + parseInt(num2,10)
+                break;
+                case '*':
+                    $calc.value  = parseInt(num1,10) * parseInt(num2,10)
+                break;
+                case '/':
+                    $calc.value  = parseInt(num1,10) / parseInt(num2,10)
+                break;
+                case '-':
+                    $calc.value  = parseInt(num1,10) - parseInt(num2,10)
+                break;
+            }
+            num1 =$calc.value;
+
+            $operator.value ='';
+            num2 =''
+            operator =''
+        }
+
+        
+        var onclick4 = () => ()=>{
+            $calc.value ='';
+            $operator.value ='';
+            num1 =''
+            num2 =''
+            operator =''
+        }
+
+        
+        document.querySelector("#num_0").addEventListener("click",onclick());
+        document.querySelector("#num_1").addEventListener("click",onclick());
+        document.querySelector("#num_2").addEventListener("click",onclick());
+        document.querySelector("#num_3").addEventListener("click",onclick());
+        document.querySelector("#num_4").addEventListener("click",onclick());
+        document.querySelector("#num_5").addEventListener("click",onclick());
+        document.querySelector("#num_6").addEventListener("click",onclick());
+        document.querySelector("#num_7").addEventListener("click",onclick());
+        document.querySelector("#num_8").addEventListener("click",onclick());
+        document.querySelector("#num_9").addEventListener("click",onclick());
+
+        document.querySelector("#num_result").addEventListener("click",onclick3());
+        
+
+        document.querySelector("#num_divide").addEventListener("click",onclick2());
+        document.querySelector("#num_plus").addEventListener("click",onclick2());
+        document.querySelector("#num_min").addEventListener("click",onclick2());
+        document.querySelector("#num_mul").addEventListener("click",onclick2());
+
+        document.querySelector("#num_remove").addEventListener("click",onclick4());
+
+
+        
+        
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        function permutation(arr,select){
+            const result =[]
+            if(select  == 1 ) return arr.map((v)=>[v]);
+        
+            arr.forEach((val,index,arr) => {
+                const sliceArr = arr.slice(index+1);
+                const permutations =permutation(sliceArr,select-1);
+                const permutationArr = permutations.map((v)=>[val,...v]);
+                result.push(...permutationArr);
+            })
+            return result
+        }
+
+
+        function solution(nums) {
+            const arr =permutation(nums,3)
+            var cnt = 0;
+            const sums =arr.map((v)=>{
+                 var sum = 0
+                for(let j = 0; j<v.length; j++){
+                    sum += v[j];
+                }
+                return sum
+            });
+            for(let i=0; i<sums.length; i++){
+                let check = 0;
+                if(sums[i] < 2) {
+                    check =1;
+                }
+                if(sums[i] == 2){
+                    check =1;
+                }
+                for(let j =2; j<sums[i]; j++ ){
+                    if(sums[i]%j ==0){
+                        check =1;
+                    }
+                }    
+       
+                if(check !=1){
+                    cnt +=1;
+                }
+            }
+        }
+        solution([1,2,7,6,4])
+    </script>
+
+</body>
+</html>

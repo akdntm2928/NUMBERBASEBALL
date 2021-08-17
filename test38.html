@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+            function solution(skill, skill_trees) {
+                var cnt = 0;
+                for(let i= 0; i<skill_trees.length; i++){
+
+
+                    let skill1 = 0 ;
+                    let skill2 = 0;
+                    let skill3 = 0;
+                    for(let j = 0; j<skill_trees[i].length; j++){
+                        
+                        if(skill_trees[i][j] == skill[0] && skill1 ==0){
+                            skill1 +=1;
+                        }
+                        if(skill_trees[i][j] == skill[1] && skill1 ==1){
+                            skill2 +=1;
+                        }
+                        if(skill_trees[i][j] == skill[2] && skill2 ==1){
+                            skill3 +=1;
+                        }
+                    }
+                    if(skill1 == 0)
+                    skill1 = 0;
+                    skill2 = 0;
+                    skill3 = 0;
+                }
+            }
+            console.log("CBD",["BACDE", "CBADF", "AECB", "BDA"]);
+            // console.log(solution([20, 99, 93, 30, 55, 10], [5, 10, 1, 1, 30, 5]));
+
+    </script>
+
+</body>
+</html>

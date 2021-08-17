@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    순서 <span id="order">1</span><br>
+    제시어:<span id="word"></span><br>
+    <input type="text" id ='newword'/>
+    <button id="btn">입력</button>
+</body>
+<script>
+
+
+
+    const number = parseInt(prompt(),10);
+
+    let $order =  document.querySelector('#order');
+    let $word  = document.querySelector("#word");
+
+    let newword; // 입력 값
+    let word; //제시어
+    
+    const onclick=()=>{
+
+        if(word == undefined){
+            word = newword;
+            $word.textContent = word;
+            const order = parseInt($order.textContent,10);
+            if(number === order){
+                $order.textContent =1;
+            }else{
+                $order.textContent = order+1
+            }
+        }else{
+            if(word[word.length-1] == newword[0]){
+                word = newword;
+                $word.textContent = word;
+                const order = parseInt($order.textContent,10);
+                if(number === order){
+                    $order.textContent =1;
+                }else{
+                    $order.textContent = order+1
+                }
+            }else{
+                window.location.reload();
+                alert("틀렸습니다.")
+            }
+        }
+    }
+    document.querySelector('#newword').addEventListener('input',function(e){
+        newword = e.target.value;
+    });
+    document.querySelector('#btn').addEventListener('click',onclick);
+</script>
+</html>
