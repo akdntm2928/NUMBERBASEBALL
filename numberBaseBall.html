@@ -67,7 +67,7 @@
             let strike = 0;
             let ball = 0;
             for (let  i = 0; i<answer.length; i++){
-                const index =value.indexOf(answer[i]);
+                const index =value.indexOf(answer[i]); // indexOf함수는 해당값이 없으면 -1을 리턴하고 값이있으면 해당값에 자리수을 리턴 한다.
                 if(index >-1){
                     if(index ===i){
                         strike +=1;
